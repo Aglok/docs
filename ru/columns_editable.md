@@ -1,13 +1,20 @@
-# Колонки таблицы
+# Столбцы Eitable
 
-- [Введение](#introduction)
-- [Поддерживаемые типы](#supported-types)
-- [Заголовок колонки](#column-heading)
+- [Введение](#Введение)
+- [Поддерживаемые типы](#Поддерживаемые-типы)
+- [Заголовок столбца](#Заголовок-столбца)
 - [API](#api)
+<<<<<<< HEAD
 - Типы
     - [Checkbox](#checkbox_editable)
     - [Text](#text_editable)
     - [Textarea](#textarea_editable)
+=======
+- [Типы](#Типы)
+    - [Checkbox](#checkbox-editable)
+    - [Text](#text-editable)
+    - [Textarea](#textarea-editable)
+>>>>>>> owl/new
     - DateTime  
     - Select   
 
@@ -15,7 +22,6 @@
 *Расширение для класса [отображения данных](displays)*
 
 
-<a name="introduction"></a>
 ## Введение
 
 Данные классы предназначены для добавления редактируемых колонок в таблицу. Данные колонки реализованы с помощь библиотеки [X-editable v1.5.1](http://vitalets.github.io/x-editable/) 
@@ -50,7 +56,7 @@ AdminDisplay::table()
 все столбцы, реализует интерфейсы `Illuminate\Contracts\Support\Arrayable`,
 `Illuminate\Contracts\Support\Renderable` и `SleepingOwl\Admin\Contracts\Initializable`.
 
-<a name="supported-types"></a>
+
 ## Поддерживаемые типы
 
  - `AdminColumnEditable::text($name, $label = null)`
@@ -60,7 +66,7 @@ AdminDisplay::table()
  - `AdminColumnEditable::checkbox($name, $checkedLabel = null, $uncheckedLabel = null)`
 
 
-<a name="column-heading"></a>
+
 ## Заголовок столбца
 
 Каждый столбец таблицы имеет заголовок и хранится в виде отдельного класса
@@ -94,8 +100,8 @@ AdminDisplay::table()
 ```
 
 
-<a name="api"></a>
-# API
+
+## API
 
 <a name="all-methods"></a>
 ## Методы доступные во всех элементах
@@ -119,8 +125,12 @@ AdminDisplay::table()
         
     SleepingOwl\Admin\Display\Column\Editable\Checkbox::setEditableMode(string $mode): return self
 
+
+## Типы
+
 <a name="checkbox_editable"></a>    
-## CheckBox Editable
+
+### CheckBox Editable
 `SleepingOwl\Admin\Display\Column\Editable\Checkbox`
 Данный элемент позволяет менять значение столбцов типа boolean прямо в таблице.
 
@@ -144,8 +154,8 @@ AdminColumnEditable::checkbox('visible','Видно', 'Не видно')->setLab
 
 
 
-<a name="text_editable"></a>    
-## Text Editable
+  
+### Text Editable
 `SleepingOwl\Admin\Display\Column\Editable\Text`
 Данный элемент позволяет менять текстовое значение прямо в таблице.
 
@@ -154,8 +164,8 @@ AdminColumnEditable::text('name')->setLabel('Имя'),
 ```
 
 
-<a name="text_editable"></a>    
-## Textarea Editable
+   
+### Textarea Editable
 `SleepingOwl\Admin\Display\Column\Editable\Textarea`
 Данный элемент позволяет менять текстовое значение прямо в таблице. В форме редактирования появится textarea.
 

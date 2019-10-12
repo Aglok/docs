@@ -1,11 +1,12 @@
+- [CHANGELOG](changelog.md)
+
 - Введение
     - [Установка](installation)
     - [Быстрый старт](fast_start)
     - [Конфигурация](configuration)
     - [Описание работы системы](global)
     - [Руководство по обновлению](update)
-    - [Участие в разработке](contributions)
-    - [Версии пакета](releases)
+<!-- - [Версии пакета](releases) -->
 - C чего начать
     - [Авторизация](authentication)
     - [Конфигурация роутов](routes_configuration)
@@ -15,7 +16,7 @@
     - [Локализация](localization)
 - Основные элементы
     - [Типы отображения данных](displays)
-    - [Фильтры](filters)
+    - [Фильтры данных](filters)
     - [Столбцы](columns)
     - [Столбцы Editable](columns_editable)
     - [Фильтры столбцов](columnfilters)
@@ -24,8 +25,7 @@
 - Прочее
     - [Javascript API](javascript)
     - [Управление ресурсами (Assets)](assets)
-    - [Загрузка картинок](image_upload)
+    - [Загрузка изображений](image_upload)
     - [HTML атрибуты](html_attributes)
     - [Виджеты](widgets)
     - [Создание элементов](extend)
-    - [Вопрос-ответ](faq)
