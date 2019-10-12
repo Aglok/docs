@@ -17,14 +17,7 @@
 Установить пакет можно помощью командной строки
 
 ```bash
-<<<<<<< HEAD
 $ composer require "laravelrus/sleepingowl":"dev-development"
-=======
-$ composer require laravelrus/sleepingowl
-
-//or branch
-$ composer require laravelrus/sleepingowl:dev-development
->>>>>>> owl/new
 ```
 
 
@@ -34,13 +27,8 @@ $ composer require laravelrus/sleepingowl:dev-development
 {
   ...
   "require": {
-<<<<<<< HEAD
      ...
      "laravelrus/sleepingowl": "dev-development"
-=======
-    ...
-    "laravelrus/sleepingowl": "dev-development",
->>>>>>> owl/new
   }
 }
 ```

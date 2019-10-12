@@ -9,11 +9,11 @@
 
 
 В SleepingOwlAdmin имеется возможность сконфигурировать модели разделов через сервис провайдер без использования директории `app/Admin`.
-Плюс данного способа в том, что конфигурация раздела описывается в классе в виде методов, а не анонимных функций и 
+Плюс данного способа в том, что конфигурация раздела описывается в классе в виде методов, а не анонимных функций и
 появляется полный доступ ко всем методам глобального конфигурационного класса.
 
 <a name="activation"></a>
-## Активация 
+## Активация
 
 Для начала вам необходимо активировать данный функционал через конфиг `sleeping_owl`, раскомментировав сервис провайдер `App\Providers\AdminSectionsServiceProvider`
 и убедиться в наличии его файла. Если файл не существует, то необходимо выполнить команду `php artisan sleepingowl:install`,
@@ -24,7 +24,7 @@
 
 Для начала необходимо связать существующие Eloquent модели с классами, которые будут конфигурациями раздела.
 
-Описание производится через добавление строк в параметр `$sections`, где в качестве ключа мы указываем 
+Описание производится через добавление строк в параметр `$sections`, где в качестве ключа мы указываем
 название нашей модели, в качестве значения - класс который будет отвечать за конфигурацию.
 
 ```php
@@ -39,8 +39,8 @@ protected $sections = [
 ];
 ```
 
-После указания связей, запускаем консольную команду `php artisan sleepingowl:section:generate`, которая нам поможет в создании классов 
-конфигурации, т.е. если указан класс `App\Http\Admin\Roles`, то для него будет создан файл `app/Http/Admin/Roles.php` с заранее 
+После указания связей, запускаем консольную команду `php artisan sleepingowl:section:generate`, которая нам поможет в создании классов
+конфигурации, т.е. если указан класс `App\Http\Admin\Roles`, то для него будет создан файл `app/Http/Admin/Roles.php` с заранее
 заготовленным кодом.
 
 !> **При удалении конфигурационных файлов необходимо выполнить консольную команду `composer dump-autoload`**
@@ -81,7 +81,7 @@ class Roles extends Section implements Initializable
         $this->addToNavigation($priority = 500, function() {
             return \App\Role::count();
         });
-        
+
         $this->creating(function($config, \Illuminate\Database\Eloquent\Model $model) {
             ...
         });
@@ -138,7 +138,7 @@ class Roles extends Section implements Initializable
         // Создание и редактирование записи идентичны, поэтому перенаправляем на метод редактирования
         return $this->onEdit(null);
     }
-    
+
     /**
      * Переопределение метода содержащего заголовок создания записи
      *
@@ -148,7 +148,7 @@ class Roles extends Section implements Initializable
     {
         return 'Добавление роли';
     }
-    
+
     /**
      * Переопределение метода для запрета удаления записи
      *
@@ -160,7 +160,7 @@ class Roles extends Section implements Initializable
     {
         return false;
     }
-    
+
     /**
      * Переопределение метода содержащего ссылку на редактирование записи
      *
@@ -187,10 +187,10 @@ class Roles extends Section implements Initializable
 }
 ```
 
-Как можно заметить код стал более читабельным. Помимо этого появилась возможность переопределения методов глобального конфигурационного класса 
+Как можно заметить код стал более читабельным. Помимо этого появилась возможность переопределения методов глобального конфигурационного класса
 и у вас появляются неограниченные возможности для гибкой настройки ваших разделов.
 
-Если класс реализует интерфейс `SleepingOwl\Admin\Contracts\Initializable`, то автоматически будет вызван метод `initialize`, 
+Если класс реализует интерфейс `SleepingOwl\Admin\Contracts\Initializable`, то автоматически будет вызван метод `initialize`,
 в котором можно поместить код, который нужно выполнить после регистрации класса, например добавление раздела в меню (Если это сделать в конструкторе класса, то раздел не будет добавлен в меню, т.к. класс еще не будет зарегистрирован).
 
 Иногда необходимо в методе `initialize` работать с данными, которые в момент вызова не инициализированы, для этого можно воспользоваться следующим приемом:
@@ -290,7 +290,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
     protected string $class
 
 #### $model
-Инстанс класса модели 
+Инстанс класса модели
 
     protected \Illuminate\Database\Eloquent\Model $model
 
@@ -378,11 +378,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
 * Доступ: **public**
 * Метод определен в классе `SleepingOwl\Admin\Model\ModelConfigurationManager`
 
-<<<<<<< HEAD
 ### isEditable
-=======
-#### isEditable
->>>>>>> owl/new
+
 Проверка на возможность редактирования записи в разделе (Если не существует метод `onEdit` вернет `false`)
 
     boolean SleepingOwl\Admin\Model\ModelConfigurationManager::isEditable(\Illuminate\Database\Eloquent\Model $model)
@@ -426,7 +423,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
 * Доступ: **public**
 
 #### getClass
-Получение названия класса модели 
+Получение названия класса модели
 
     string SleepingOwl\Admin\Model\ModelConfigurationManager::getClass()
 
@@ -507,11 +504,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
 * Доступ: **public**
 * Метод определен в классе `SleepingOwl\Admin\Model\ModelConfigurationManager`
 
-<<<<<<< HEAD
 ### getControllerClass
-=======
-#### getControllerClass
->>>>>>> owl/new
+
 Получение названия класса контроллера
 
     null|string SleepingOwl\Admin\Model\ModelConfigurationManager::getControllerClass()
@@ -571,7 +565,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
 * Метод определен в классе `SleepingOwl\Admin\Model\ModelConfigurationManager`
 
 #### getDestroyUrl
-Получение ссылки на страницу окончательного удаления записи (в случае если запись помечена как удаленная) 
+Получение ссылки на страницу окончательного удаления записи (в случае если запись помечена как удаленная)
 
     string SleepingOwl\Admin\Model\ModelConfigurationManager::getDestroyUrl(string|integer $id)
 
@@ -621,7 +615,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
 
 
 #### getMessageOnDestroy
-Получение текста отображаемого после успешного окончательного удаления записи (в случае если запись помечена как удаленная) 
+Получение текста отображаемого после успешного окончательного удаления записи (в случае если запись помечена как удаленная)
 
     string SleepingOwl\Admin\Model\ModelConfigurationManager::getMessageOnDestroy()
 
@@ -642,11 +636,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
 * $priority **integer** Приоритет вывода в списке
 * $badge **string|Closure|KodiComponents\Navigation\Contracts\BadgeInterface** Текст или класс бейджа, который отображается рядом с пунктом меню (Например кол-во записей)
 
-<<<<<<< HEAD
 ### creating
-=======
-#### creating
->>>>>>> owl/new
+
 Событие срабатывающее в процессе создания записи (В случае если метод возвращает `false`, запись не будет создана)
 
      SleepingOwl\Admin\Model\ModelConfigurationManager::creating(Closure $callback)
@@ -657,11 +648,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
 ##### Arguments
 * $callback **Closure|null** В функцию будет передан `ModelConfigurationInterface $config` и `\Illuminate\Database\Eloquent\Model $model`
 
-<<<<<<< HEAD
 ### created
-=======
-#### created
->>>>>>> owl/new
+
 Событие срабатывающее после создания записи
 
      SleepingOwl\Admin\Model\ModelConfigurationManager::created(Closure $callback)
@@ -673,11 +661,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
 * $callback **Closure|null** В функцию будет передан `ModelConfigurationInterface $config` и `\Illuminate\Database\Eloquent\Model $model`
 
 
-<<<<<<< HEAD
 ### updating
-=======
-#### updating
->>>>>>> owl/new
+
 Событие срабатывающее в процессе обновления записи (В случае если метод возвращает `false`, запись не будет обновлена)
 
      SleepingOwl\Admin\Model\ModelConfigurationManager::updating(Closure $callback)
@@ -688,11 +673,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
 ##### Arguments
 * $callback **Closure|null** В функцию будет передан `ModelConfigurationInterface $config` и `\Illuminate\Database\Eloquent\Model $model`
 
-<<<<<<< HEAD
 ### updated
-=======
-#### updated
->>>>>>> owl/new
+
 Событие срабатывающее после обновления записи
 
      SleepingOwl\Admin\Model\ModelConfigurationManager::updated(Closure $callback)
@@ -703,11 +685,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
 ##### Arguments
 * $callback **Closure|null** В функцию будет передан `ModelConfigurationInterface $config` и `\Illuminate\Database\Eloquent\Model $model`
 
-<<<<<<< HEAD
 ### deleting
-=======
-#### deleting
->>>>>>> owl/new
+
 Событие срабатывающее в процессе удаления записи (В случае если метод возвращает `false`, запись не будет удалена)
 
      SleepingOwl\Admin\Model\ModelConfigurationManager::deleting(Closure $callback)
@@ -718,11 +697,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
 ##### Arguments
 * $callback **Closure|null** В функцию будет передан `ModelConfigurationInterface $config` и `\Illuminate\Database\Eloquent\Model $model`
 
-<<<<<<< HEAD
 ### deleted
-=======
-#### deleted
->>>>>>> owl/new
+
 Событие срабатывающее после удаления записи
 
      SleepingOwl\Admin\Model\ModelConfigurationManager::deleted(Closure $callback)
@@ -733,11 +709,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
 ##### Arguments
 * $callback **Closure|null** В функцию будет передан `ModelConfigurationInterface $config` и `\Illuminate\Database\Eloquent\Model $model`
 
-<<<<<<< HEAD
 ### restoring
-=======
-#### restoring
->>>>>>> owl/new
+
 Событие срабатывающее в процессе восстановления записи (В случае если метод возвращает `false`, запись не будет восстановлена)
 
      SleepingOwl\Admin\Model\ModelConfigurationManager::restoring(Closure $callback)
@@ -748,11 +721,9 @@ class AdminSectionsServiceProvider extends ServiceProvider
 ##### Arguments
 * $callback **Closure|null** В функцию будет передан `ModelConfigurationInterface $config` и `\Illuminate\Database\Eloquent\Model $model`
 
-<<<<<<< HEAD
+
 ### restored
-=======
-#### restored
->>>>>>> owl/new
+
 Событие срабатывающее после восстановления записи
 
      SleepingOwl\Admin\Model\ModelConfigurationManager::restored(Closure $callback)

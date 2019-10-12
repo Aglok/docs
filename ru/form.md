@@ -76,12 +76,12 @@ $form->addElement(new \App\Form\Panel\CustomBlockClass([
 Добавление элементов в блок `panel-heading`
 
     SleepingOwl\Admin\Form\FormPanel::addHeader(array|\SleepingOwl\Admin\Contracts\FormElementInterface $items): return self
-    
+
 #### addBody
 Добавление элементов в блок `panel-body`. Если предыдущий блок `body`, то между ними будет вставлен элемент `<hr />`
 
     SleepingOwl\Admin\Form\FormPanel::addBody(array|\SleepingOwl\Admin\Contracts\FormElementInterface $items): return self
-    
+
 #### addFooter
 Добавление элементов в блок `panel-footer`
 
@@ -118,17 +118,17 @@ AdminForm::tabbed()->setElements([
 Указание view отвечающего за вывод формы
 
     SleepingOwl\Admin\Form\FormDefault::setView(\Illuminate\View\View|string $view): return self
-    
+
 #### setAction
 Указание ссылки, на которую будут отправлены данные формы.
 
     SleepingOwl\Admin\Contracts\FormInterface::setAction(string $action): return self
-    
+
 #### setElements
 Добавление массива элементов в форму
 
     SleepingOwl\Admin\Contracts\Form\ElementsInterface::setElements(array $elements): return self
-    
+
 
 #### addElement
 Добавление элемента в форму
@@ -145,13 +145,8 @@ AdminForm::form()->setElements([
 ])
 ```
 
-<<<<<<< HEAD
 <a name="tabs"></a>
 ## Табы
-=======
-
-## Tabs
->>>>>>> owl/new
 Вы можете в качестве элемента формы помещать табы. **Делайте названия табов уникальными при размещении нескольких разделов со вкладками, т.к. табы могут включаться некорректно.**
 
 ```php
@@ -176,7 +171,7 @@ $tabs->appendTab([
 
 
 $tabs1 = AdminDisplay::tabbed();
-    
+
 $tabs1 = ....;
 
 
@@ -187,14 +182,14 @@ AdminForm::form()
         AdminColumn::image('image', 'Image') // Вывод загружененой картинки
     ])
     ->addElement($tabs1);
-    
+
 // or
 
 $form = AdminForm::panel()
     ->addHeader([
         $tabs
     ]);
-    
+
 // or
 
 $form = AdminForm::panel()
@@ -213,7 +208,7 @@ $columns = AdminFormElement::columns([
     [
         AdminFormElement::text('title', 'Title')->required()
     ],
-    // or 
+    // or
     function() {
         return [
             AdminFormElement::text('title', 'Title')->required()
@@ -229,7 +224,7 @@ $columns->addColumn([
     AdminFormElement::date('created_at', 'Created At')->required()
 ]);
 
-// or 
+// or
 
 $columns->addColumn(function() {
     return [
@@ -272,7 +267,7 @@ AdminFormElement::columns()
     ], 6)
 ,
 
-// Передать строку: 
+// Передать строку:
 // каждая колонка будет иметь class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
 AdminFormElement::columns()
     ->addColumn([
@@ -283,7 +278,7 @@ AdminFormElement::columns()
     ], 'col-xs-12 col-sm-6 col-md-6 col-lg-6')
 ,
 
-// Передать массив строк: вариация предыдущего метода, 
+// Передать массив строк: вариация предыдущего метода,
 // каждая колонка будет иметь class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
 AdminFormElement::columns()
     ->addColumn([

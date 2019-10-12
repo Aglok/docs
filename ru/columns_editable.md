@@ -4,19 +4,12 @@
 - [Поддерживаемые типы](#Поддерживаемые-типы)
 - [Заголовок столбца](#Заголовок-столбца)
 - [API](#api)
-<<<<<<< HEAD
 - Типы
     - [Checkbox](#checkbox_editable)
     - [Text](#text_editable)
     - [Textarea](#textarea_editable)
-=======
-- [Типы](#Типы)
-    - [Checkbox](#checkbox-editable)
-    - [Text](#text-editable)
-    - [Textarea](#textarea-editable)
->>>>>>> owl/new
-    - DateTime  
-    - Select   
+    - DateTime
+    - Select
 
 
 *Расширение для класса [отображения данных](displays)*
@@ -24,7 +17,7 @@
 
 ## Введение
 
-Данные классы предназначены для добавления редактируемых колонок в таблицу. Данные колонки реализованы с помощь библиотеки [X-editable v1.5.1](http://vitalets.github.io/x-editable/) 
+Данные классы предназначены для добавления редактируемых колонок в таблицу. Данные колонки реализованы с помощь библиотеки [X-editable v1.5.1](http://vitalets.github.io/x-editable/)
 
 **Пример использования**
 
@@ -35,8 +28,8 @@ use AdminColumnEditable;
 
 AdminDisplay::table()
     ->setColumns([
-        AdminColumnEditable::text('name')->setLabel('Название'),       
-        AdminColumnEditable::textarea('content')->setLabel('Описание'),       
+        AdminColumnEditable::text('name')->setLabel('Название'),
+        AdminColumnEditable::textarea('content')->setLabel('Описание'),
         AdminColumnEditable::select('category_id')->setWidth('250px')
                         ->setModelForOptions(new Category)
                         ->setLabel('Категория')
@@ -44,10 +37,10 @@ AdminDisplay::table()
                         ->setLoadOptionsQueryPreparer(function($element, $query) {
                             return $query->MyScoupe();
                         })->setTitle('Выберите категорию:'),
-        
+
         AdminColumnEditable::checkbox('visible')->setLabel('Отображение')->setWidth('30px'),
 
-                        
+
     ])
 ...
 ```
@@ -62,7 +55,7 @@ AdminDisplay::table()
  - `AdminColumnEditable::text($name, $label = null)`
  - `AdminColumnEditable::select($name, $label = null)`
  - `AdminColumnEditable::textarea($name, $label = null)`
- - `AdminColumnEditable::datetime($name, $label = null)` 
+ - `AdminColumnEditable::datetime($name, $label = null)`
  - `AdminColumnEditable::checkbox($name, $checkedLabel = null, $uncheckedLabel = null)`
 
 
@@ -105,30 +98,30 @@ AdminDisplay::table()
 
 <a name="all-methods"></a>
 ## Методы доступные во всех элементах
-Во всех Editable элементах доступны методы обычных [столбцов таблиц](https://sleepingowladmin.ru/docs/columns#api) 
+Во всех Editable элементах доступны методы обычных [столбцов таблиц](https://sleepingowladmin.ru/docs/columns#api)
 
-Помимо этого существуют специальные методы. 
+Помимо этого существуют специальные методы.
 
 <a name="set-label"></a>
 #### setUrl
 Вы можете установить свой url для отправки данных и принятия их в Кастом контроллере
 
     SleepingOwl\Admin\Display\Column\Editable\Checkbox::setUrl(string $url): return self
-    
+
 #### setTitle
 Установка сообщения в форме редактирования значения.
-    
+
     SleepingOwl\Admin\Display\Column\Editable\Checkbox::setTitle(string $title): return self
-    
+
 #### setEditableMode
 Устанавливает способ появления формы редактирования. Внутри ячейки - 'inline' или по умолчанию во всплывающем окне - 'popup'
-        
+
     SleepingOwl\Admin\Display\Column\Editable\Checkbox::setEditableMode(string $mode): return self
 
 
 ## Типы
 
-<a name="checkbox_editable"></a>    
+<a name="checkbox_editable"></a>
 
 ### CheckBox Editable
 `SleepingOwl\Admin\Display\Column\Editable\Checkbox`
@@ -141,12 +134,12 @@ AdminColumnEditable::checkbox('visible','Видно', 'Не видно')->setLab
 ```
 
 
-    
+
 #### setCheckedLabel
 Отображаемый текст в таблице при значении True
 
     SleepingOwl\Admin\Display\Column\Editable\Checkbox::setCheckedLabel(string $label): return self
-    
+
 #### setUncheckedLabel
 Отображаемый текст в таблице при значении False
 
@@ -154,7 +147,7 @@ AdminColumnEditable::checkbox('visible','Видно', 'Не видно')->setLab
 
 
 
-  
+
 ### Text Editable
 `SleepingOwl\Admin\Display\Column\Editable\Text`
 Данный элемент позволяет менять текстовое значение прямо в таблице.
@@ -164,7 +157,7 @@ AdminColumnEditable::text('name')->setLabel('Имя'),
 ```
 
 
-   
+
 ### Textarea Editable
 `SleepingOwl\Admin\Display\Column\Editable\Textarea`
 Данный элемент позволяет менять текстовое значение прямо в таблице. В форме редактирования появится textarea.

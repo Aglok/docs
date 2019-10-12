@@ -37,12 +37,12 @@ $display = AdminDisplay::table()
 Указание ключа поля, по которому будет производиться фильтрация
 
     SleepingOwl\Admin\Display\Filter\FilterBase::setName(string $name): return self
-    
+
 #### setAlias
 Указание алиаса для поля, который будет использоваться вместо ключа поля для получение значения из запроса.
 
     SleepingOwl\Admin\Display\Filter\FilterBase::setAlias(string $alias): return self
-    
+
 ```php
 AdminDisplayFilter::field('category_id')->setAlias('category'); // ?category=1
 ```
@@ -51,22 +51,22 @@ AdminDisplayFilter::field('category_id')->setAlias('category'); // ?category=1
 Указание заголовка в случае применения этого фильтра. Т.е. как только фильтр сработает, над списком результатов будет выведен заголовок для фильтра, если сработало несколько фильтров, то заголовки будут разделены знаком ` | `
 
     SleepingOwl\Admin\Display\Filter\FilterBase::setTitle(\Closure|string $title): return self
-    
+
 ```php
-AdminDisplayFilter::field('category_id')->setTitle('Category ID [:value]'); 
+AdminDisplayFilter::field('category_id')->setTitle('Category ID [:value]');
 
 // or
 
 AdminDisplayFilter::field('category_id')->setTitle(function($value) {
     return "Category ID [{$value}]";
-}); 
+});
 ```
 
 #### setValue
 Принудительное указание значения для фильтрации. **При указании значения фильтр не будет обращаться к параметрам запроса**
 
     SleepingOwl\Admin\Display\Filter\FilterBase::setValue(mixed $value): return self
-    
+
 
 ```php
 AdminDisplayFilter::field('category_id')->setValue(1);
@@ -84,10 +84,10 @@ AdminDisplayFilter::field('category_id');
 ### API
 
 #### setOperator
-Указание оператора сравнения. Помимо обычного сравнения вы можете указать как именно фильтр должен проверять значение. 
+Указание оператора сравнения. Помимо обычного сравнения вы можете указать как именно фильтр должен проверять значение.
 
     SleepingOwl\Admin\Display\Filter\FilterBase::setOperator(string $operator): return self
-    
+
  - `equal` - `column = value`
  - `not_equal` - `column != value`
  - `less` - `column < value`
@@ -113,15 +113,10 @@ AdminDisplayFilter::field('category_id');
 AdminDisplayFilter::field('category_id')->setOperator('in'); // ?category_id[]=1&category_id[]=2&category_id[]=5
 ```
 
-<<<<<<< HEAD
 <a name="scopes"></a>
 ## Фильтр по [eloquent scopes](https://laravel.com/docs/5.2/eloquent#query-scopes)
 Этот фильтр будет применять `scope` к вашему запросу. Допустим вы выводите список новостей и хотите иметь возможность фильтровать ваши записи по `scope`, который имеется в модели `App\Post`, с помощью которой вы формируете список.
-=======
 
-## Фильтр по eloquent scopes
-Этот фильтр будет применять `scope` ([eloquent scopes](https://laravel.com/docs/eloquent#query-scopes)) к вашему запросу. Допустим вы выводите список новостей и хотите иметь возможность фильтровать ваши записи по `scope`, который имеется в модели `App\Post`, с помощью которой вы формируете список.
->>>>>>> owl/new
 
 ```php
 <?php
@@ -130,7 +125,7 @@ namespace App;
 class Post extends Model
 {
     ...
-    
+
     /**
      * @param     $query
      *
@@ -140,7 +135,7 @@ class Post extends Model
     {
         return $query->orderBy('created_at', 'desc');
     }
-    
+
     /**
      * @param     $query
      *

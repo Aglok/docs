@@ -17,14 +17,7 @@
 You can install the package using the command line
 
 ```bash
-<<<<<<< HEAD
 $ composer require "laravelrus/sleepingowl":"dev-development"
-=======
-$ composer require laravelrus/sleepingowl
-
-//or branch
-$ composer require laravelrus/sleepingowl:dev-development
->>>>>>> owl/new
 ```
 
 
@@ -34,13 +27,8 @@ or manually adding a package to `composer.json`
 {
   ...
   "require": {
-<<<<<<< HEAD
      ...
      "laravelrus/sleepingowl": "dev-development"
-=======
-    ...
-    "laravelrus/sleepingowl": "dev-development",
->>>>>>> owl/new
   }
 }
 ```

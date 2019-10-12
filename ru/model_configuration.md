@@ -2,18 +2,6 @@
 
 !> Это старый способ и лучше его не использовать. Сразу переходите [сюда](model_configuration_section)
 
-<<<<<<< HEAD
-=======
-- [Конфигурация модели](#Конфигурация-модели)
-    - [Всплывающие сообщения при совершении действий](#Всплывающие-сообщения-при-совершении-действий)
-    - [Запрет на выполнение действий](#Запрет-на-выполнение-действий)
-    - [Переопределение редиректа при выполнении действий](#Переопределение-редиректа-при-выполнении-действий)
-    - [Ограничение прав доступа](#Ограничение-прав-доступа)
-    - [События](#События)
-    - [Переопределение контроллера](#Переопределение-контроллера)
-    - [API (Доступные методы)](#api-Доступные-методы)
-
->>>>>>> owl/new
 Конфигурация моделей SleepingOwl Admin должна быть расположена в директории, которая указывается в конфиге `sleeping_owl.bootstrapDirectory` (*по умолчанию: `app/admin`*).
 
 Вы можете хранить конфигурацию моделей в одном файле или разделить на несколько по желанию.
@@ -60,17 +48,17 @@ $model->setAlias('subdir/companies');
 Вы можете изменить текст сообщений, который отображается при добавлении, редактировании и удалении записи.
 
 ```php
-AdminSection::registerModel(Company::class, function (ModelConfiguration $model) { 
+AdminSection::registerModel(Company::class, function (ModelConfiguration $model) {
 
     // Создание записи
     $model->setMessageOnCreate('Company created');
-   
+
     // Редактирование записи
     $model->setMessageOnUpdate('Company updated');
-    
+
     // Удаление записи
     $model->setMessageOnDelete('Company deleted');
-   
+
     // Восстановление записи
     $model->setMessageOnRestore('Company restored');
 });
@@ -82,19 +70,19 @@ AdminSection::registerModel(Company::class, function (ModelConfiguration $model)
 Бывают случаи когда необходимо например запретить редактирование или удаление данных в разделе. Для этого целей существую специальные методы:
 
 ```php
-AdminSection::registerModel(Company::class, function (ModelConfiguration $model) { 
+AdminSection::registerModel(Company::class, function (ModelConfiguration $model) {
     // Запрет на просмотр
     $model->disableDisplay();
-    
+
     // Запрет на создание
     $model->disableCreating();
-    
+
     // Запрет на редактирование
     $model->disableEditing();
-    
+
     // Запрет на удаление
     $model->disableDeleting();
-    
+
     // Запрет на восстановление
     $model->disableRestoring();
 })
@@ -107,16 +95,16 @@ AdminSection::registerModel(Company::class, function (ModelConfiguration $model)
 пользователя после нажатия на кнопку сохранить в таблицу, а не на страницу редактирования
 
 ```php
-AdminSection::registerModel(Company::class, function (ModelConfiguration $model) { 
+AdminSection::registerModel(Company::class, function (ModelConfiguration $model) {
     // Редирект при редактировании в таблицу
     $model->setRedirect(['edit' => 'display']);
-    
+
     // Редирект при редактировании в таблицу
     $model->setRedirect(['create' => 'display']);
-    
+
     // Оба случая вместе
     $model->setRedirect(['create' => 'display', 'edit' => 'display']);
-    
+
     //В противном случае сработает дефолтная логика
 
 })
@@ -264,42 +252,42 @@ protected $policies = [
 У вас есть возможность подписаться на события создания, редактирования, удаления и восстановления записей в разделе.
 
 ```php
-AdminSection::registerModel(Company::class, function (ModelConfiguration $model) { 
+AdminSection::registerModel(Company::class, function (ModelConfiguration $model) {
 
     // Создание записи
     $model->creating(function(ModelConfiguration $model, Company $company) {
         // Если вернуть false, то создание будет прервано
     });
-    
+
     $model->created(function(ModelConfiguration $model, Company $company) {
-    
+
     });
-    
+
     // Обновление записи
     $model->updating(function(ModelConfiguration $model, Company $company) {
         // Если вернуть false, то обновление будет прервано
     });
-    
+
     $model->updated(function(ModelConfiguration $model, Company $company) {
-    
+
     });
-    
+
     // Удаление записи
     $model->deleting(function(ModelConfiguration $model, Company $company) {
         // Если вернуть false, то удаление будет прервано
     });
-    
+
     $model->deleted(function(ModelConfiguration $model, Company $company) {
-    
+
     });
-    
+
     // Восстановление записи
     $model->restoring(function(ModelConfiguration $model, Company $company) {
         // Если вернуть false, то восстановление будет прервано
     });
-    
+
     $model->restored(function(ModelConfiguration $model, Company $company) {
-    
+
     });
 });
 ```
@@ -363,7 +351,7 @@ $model->setAlias('manage/user');
     \SleepingOwl\Admin\Model\ModelConfiguration SleepingOwl\Admin\Model\ModelConfiguration::setUpdateTitle(string $title)
 
 ### onDisplay
-Описание данных для вывода списка записей на страницы 
+Описание данных для вывода списка записей на страницы
 
     \SleepingOwl\Admin\Model\ModelConfiguration SleepingOwl\Admin\Model\ModelConfiguration::onDisplay(\Closure $callback)
 
@@ -506,7 +494,7 @@ $model->setAlias('manage/user');
 * $badge **string|Closure|KodiComponents\Navigation\Contracts\BadgeInterface** Текст или класс бейджа, который отображается рядом с пунктом меню (Например кол-во записей)
 
 ### creating
-Событие срабатывающее в процессе создания записи (В случае если метод возвращает false, запись не будет создана) 
+Событие срабатывающее в процессе создания записи (В случае если метод возвращает false, запись не будет создана)
 
      SleepingOwl\Admin\Model\ModelConfigurationManager::creating(Closure $callback)
 
